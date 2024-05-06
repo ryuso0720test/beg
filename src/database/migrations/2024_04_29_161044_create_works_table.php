@@ -15,7 +15,7 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')>nullable(true);
+            $table->foreignId('user_id');
             $table->time('start_time')->nullable(false);
             $table->date('date')->nullable(false);
             $table->time('end_time')->nullable(true);

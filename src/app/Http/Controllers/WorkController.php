@@ -15,14 +15,14 @@ class WorkController extends Controller
             'date',
             'user_id'
         ]);
-        //ユーザーID取得
-        $id = auth()->id();
+        // //ユーザーID取得
+        // $id = auth()->id();
 
-        //日付取得
-        $date = date('Y-m-d');
+        // //日付取得
+        // $date = date('Y-m-d');
 
-        //現在日時取得
-        $now = now()->format('H:i');
+        // //現在日時取得
+        // $now = now()->format('H:i');
 
         Work::create($work);
         return redirect('/');
