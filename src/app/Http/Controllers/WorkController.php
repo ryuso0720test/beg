@@ -114,7 +114,16 @@ class WorkController extends Controller
 
     public function show ()
     {
-        return view('date');
+        $works = Work::paginate(7);
+        $users = User::all();
+
+        return view('date',compact('works','users'));
+    }
+
+    public function userList()
+    {
+        $users = User::all();
+        return view('userList',compact('users'));
     }
 
 

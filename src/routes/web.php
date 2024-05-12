@@ -14,6 +14,7 @@ Route::middleware('auth')->group(function () {
 Route::post('/workStart', [WorkController::class, 'store']);
 Route::post('/workEnd', [WorkController::class, 'store_end']);
 Route::get('/date', [WorkController::class, 'show']);
+Route::get('/userList', [WorkController::class, 'userList']);
 
 Route::post('/restStart', [RestController::class, 'storeRest']);
 Route::post('/restEnd', [RestController::class, 'updateRest']);
