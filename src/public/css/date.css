@@ -83,3 +83,12 @@
     justify-content: center;
     align-items: center;
 }
+
+
+
+.info-btn {
+    border: solid 1px #868585;
+    padding: 2px 4px;
+    background-color: lightskyblue;
+    color: aliceblue;
+}

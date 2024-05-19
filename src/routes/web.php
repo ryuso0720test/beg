@@ -13,8 +13,14 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/workStart', [WorkController::class, 'store']);
 Route::post('/workEnd', [WorkController::class, 'store_end']);
-Route::get('/date', [WorkController::class, 'show']);
-Route::get('/userList', [WorkController::class, 'userList']);
+Route::get('/attendance', [WorkController::class, 'show']);
+Route::get('/attendance/date-next', [WorkController::class, 'dateNext']);
+Route::get('/attendance/date-pre', [WorkController::class, 'datePre']);
 
+Route::get('/attendance/date-next/user/{id}', [WorkController::class, 'dateNextUser']);
+Route::get('/attendance/date-pre/user/{id}', [WorkController::class, 'datePreUser']);
+
+Route::get('/userList', [WorkController::class, 'userList']);
+Route::get('/attendance/{id}', [WorkController::class, 'user_date']);
 Route::post('/restStart', [RestController::class, 'storeRest']);
 Route::post('/restEnd', [RestController::class, 'updateRest']);

@@ -8,10 +8,11 @@
 @section('content')
 <div class="date__content">
   <div class="date-title__content">
-    <form action="/attendance/date-pre" method="get">
+    <form action="/attendance/date-pre/user/{{ $user_id }}" method="get">
       <button>
         <div class="date-title__left"><</div>
         <input type="hidden" id="pre-date" name="pre-date" value="{{ $date }}" readonly />
+        <input type="hidden" id="user_id" name="user_id" value="{{ $user_id }}" readonly />
       </button>
     </form>
 
@@ -19,10 +20,11 @@
       <div class="title">{{ $date }}</div>
     </div>
 
-    <form action="/attendance/date-next" method="get">
+    <form action="/attendance/date-next/user/{{ $user_id }}" method="get">
       <button>
         <div class="date-title__right">></div>
         <input type="hidden" id="next-date" name="next-date" value="{{ $date }}" readonly />
+        <input type="hidden" id="user_id" name="user_id" value="{{ $user_id }}" readonly />
       </button>
       
     </form>
@@ -44,11 +46,7 @@
           <tr>
             <form action="">
               <td class="date-table__row">
-                @foreach ($users as $user =>$value )
-                            @if($value['id'] == $work['user_id'])
-                                <p class="contact-table__item-input">{{ $value['name'] }}</p>
-                            @endif
-                @endforeach
+                <p class="contact-table__item-input">{{ $user_name }}</p>
               </td>
               <td class="date-table__row">
                   <p class="date-table__item-input">{{ $work['start_time'] }}</p>
@@ -67,8 +65,6 @@
         @endforeach
       </table>
   </div>
-
-  <div class="page">{{ $works->onEachSide(0)->links('vendor.pagination.tailwind') }}</div>
 
 </div>
 @endsection

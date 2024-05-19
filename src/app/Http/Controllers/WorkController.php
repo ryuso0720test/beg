@@ -53,7 +53,6 @@ class WorkController extends Controller
 
         if($work_id == NULL)
         {
-            dd();
             return;
         }
 
@@ -114,16 +113,148 @@ class WorkController extends Controller
 
     public function show ()
     {
-        $works = Work::paginate(7);
+        //日付取得
+        $date = date('Y-m-d');
+
+        //データ取得
+        $works = Work::query()
+        ->where('date',$date)
+        ->paginate(5);
+        
         $users = User::all();
 
-        return view('date',compact('works','users'));
+        return view('date',compact('works','users','date'));
     }
 
     public function userList()
     {
-        $users = User::all();
+        $users = User::orderBy('updated_at', 'desc')
+        ->paginate(5);
+
         return view('userList',compact('users'));
+    }
+
+    /** 次の日 */
+    public function dateNext(Request $request)
+    {
+        $c = $request->only([
+            'next-date',
+        ]);
+        $day =  $c["next-date"];
+        $date = date('Y-m-d',strtotime($day . '+1 day'));
+        $currentDay = date('Y-m-d');
+
+        //未来の場合
+        if($currentDay < $date)
+        {
+            return redirect('/attendance');
+        }
+
+        //データ取得
+        $works = Work::query()
+        ->where('date',$date)
+        ->paginate(5);
+        $users = User::all();
+
+        return view('date',compact('works','users','date'));
+    }
+
+    /** 前の日 */
+    public function datePre(Request $request)
+    {
+        $c = $request->only([
+            'pre-date',
+        ]);
+        $day =  $c["pre-date"];
+        $date = date('Y-m-d',strtotime($day . '-1 day'));
+
+        //データ取得
+        $works = Work::query()
+        ->where('date',$date)
+        ->paginate(5);
+        $users = User::all();
+
+        return view('date',compact('works','users','date'));
+    }
+
+    public function user_date(Request $request)
+    {
+        $id = $request->only([
+            'user_id',
+        ]);
+        $user_id = $id['user_id'];
+        $user_name = User::query()
+        ->where('id',$user_id)
+        ->value('name');
+
+        $date = date('Y-m-d');
+
+        //データ取得
+        $works = Work::query()
+        ->where('date',$date)
+        ->where('user_id',$user_id)
+        ->paginate(5);
+
+        return view('date-user',compact('works','user_name','date','user_id'));
+    }
+
+    /** ユーザー毎 次の日 */
+    public function dateNextUser(Request $request)
+    {
+        $c = $request->only([
+            'next-date',
+            'user_id',
+        ]);
+        $day =  $c["next-date"];
+        $user_id =  $c["user_id"];
+
+        $user_name = User::query()
+        ->where('id',$user_id)
+        ->value('name');
+
+        $date = date('Y-m-d',strtotime($day . '+1 day'));
+        $currentDay = date('Y-m-d');
+
+        //未来の場合
+        if($currentDay < $date)
+        {
+            return redirect('/attendance');
+        }
+
+        //データ取得
+        $works = Work::query()
+        ->where('date',$date)
+        ->where('user_id',$user_id)
+        ->paginate(5);
+        $users = User::all();
+
+        return view('date-user',compact('works','user_name','date','user_id'));
+    }
+
+    /**ユーザー毎 前の日 */
+    public function datePreUser(Request $request)
+    {
+        
+        $c = $request->only([
+            'pre-date',
+            'user_id',
+        ]);
+        $user_id =  $c["user_id"];
+        $day =  $c["pre-date"];
+        $date = date('Y-m-d',strtotime($day . '-1 day'));
+
+        $user_name = User::query()
+        ->where('id',$user_id)
+        ->value('name');
+
+        //データ取得
+        $works = Work::query()
+        ->where('date',$date)
+        ->where('user_id',$user_id)
+        ->paginate(5);
+        $users = User::all();
+
+        return view('date-user',compact('works','user_name','date','user_id'));
     }
 
 

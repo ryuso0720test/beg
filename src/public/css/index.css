@@ -44,6 +44,9 @@
     margin-right: 40px;
     font-size: 20px;
 }
+.attendance__button:active {
+    background: #fff;
+}
 
 .attendance__content {
     height: 86vh;

@@ -8,7 +8,7 @@
 
 <div class="attendance__content">
   <div class="attendance__alert">
-    テスト太郎さんお疲れ様です!
+    {{ $userName}}さんお疲れ様です!
   </div>
   <div class="attendance__content-area">
     <div class="attendance__panel-top">
@@ -18,7 +18,6 @@
         <input type="hidden" id="start_time" name="start_time" value="<?php echo \Carbon\Carbon::now()->format('H:i:s');?> " readonly />
         <input type="hidden" id="date" name="date" value="<?php echo date('Y-m-j');?> " readonly />
         <input type="hidden" id="user_id" name="user_id" value="<?php echo Auth::id(); ?> " readonly />
-        <?php echo \Carbon\Carbon::now()->format('H:i:s');?>
 
       </form>
       <form class="attendance__button" action="/workEnd" method="post">
