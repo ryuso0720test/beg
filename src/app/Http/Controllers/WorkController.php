@@ -17,14 +17,21 @@ class WorkController extends Controller
             'date',
             'user_id'
         ]);
-        // //ユーザーID取得
-        // $id = auth()->id();
+        //ユーザーID取得
+        $id = auth()->id();
 
-        // //日付取得
-        // $date = date('Y-m-d');
+        //現在日付取得
+        $date = date('Y-m-d');
 
-        // //現在日時取得
-        // $now = now()->format('H:i');
+        $work_id = Work::query()
+        ->where('user_id',$id)
+        ->where('date',$date)
+        ->value('id');
+
+        if($work_id != null)
+        {
+            return redirect('/')->with('flash_message', '本日はすでに勤務開始が登録済み');
+        }
 
         Work::create($work);
         return redirect('/');
@@ -53,7 +60,7 @@ class WorkController extends Controller
 
         if($work_id == NULL)
         {
-            return;
+            return redirect('/')->with('flash_message', 'すでに勤務終了済みまたは勤務開始が押されていません');
         }
 
         // 

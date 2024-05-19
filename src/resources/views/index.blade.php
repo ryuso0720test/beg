@@ -10,6 +10,12 @@
   <div class="attendance__alert">
     {{ $userName}}さんお疲れ様です!
   </div>
+  <!-- フラッシュメッセージ -->
+  @if (session('flash_message'))
+      <div class="flash_message">
+          {{ session('flash_message') }}
+      </div>
+  @endif
   <div class="attendance__content-area">
     <div class="attendance__panel-top">
       <form class="attendance__button" action="/workStart" method="post">

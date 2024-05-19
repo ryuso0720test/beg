@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class RestController extends Controller
 {
-    // 勤務終了
+    // 休憩開始
     public function storeRest(Request $request)
     {
 
@@ -30,12 +30,14 @@ class RestController extends Controller
         $s = Work::query()
         ->where('user_id',$id)
         ->where('date',$date)
+        ->where('end_time',NULL)
         ->orderBy('id', 'desc')
         ->value('id');
 
-
-        // 
-        $rest["work_id"] = $s;
+        if($s == NULL)
+        {
+            return redirect('/')->with('flash_message', 'すでに勤務終了済みまたは勤務開始が押されていないため休憩開始が行えません');
+        }
 
         Rest::create($rest);
 
@@ -67,6 +69,11 @@ class RestController extends Controller
         ->where('work_id',$id)
         ->where('end_time',NULL)
         ->value('start_time');
+
+        if($rest_start == NULL)
+        {
+            return redirect('/')->with('flash_message', '休憩開始されていないため操作できません');
+        }
 
         // 1.開始日時を設定
         $startDate = new Carbon($rest_start);

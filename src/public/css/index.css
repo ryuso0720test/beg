@@ -69,3 +69,8 @@
     display: flex;
     justify-content: center;
 }
+
+.flash_message {
+    text-align: center;
+    color: red;
+}
