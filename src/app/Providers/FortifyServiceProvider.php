@@ -21,12 +21,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
-        public function toResponse($request)
-        {
-            return view('auth.mail');
-        }
-    });
+        // $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+        // public function toResponse($request)
+        // {
+        //     return view('auth.mail');
+        // }
+    // });
     }
 
     /**
@@ -47,10 +47,10 @@ class FortifyServiceProvider extends ServiceProvider
 
 
 
-        RateLimiter::for('login', function (Request $request) {
-            $email = (string) $request->email;
+        // RateLimiter::for('login', function (Request $request) {
+        //     $email = (string) $request->email;
 
-            return Limit::perMinute(10)->by($email . $request->ip());
-        });
+        //     return Limit::perMinute(10)->by($email . $request->ip());
+        // });
     }
 }
