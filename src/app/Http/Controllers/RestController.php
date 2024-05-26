@@ -39,6 +39,17 @@ class RestController extends Controller
             return redirect('/')->with('flash_message', 'すでに勤務終了済みまたは勤務開始が押されていないため休憩開始が行えません');
         }
 
+        $rest_id = Rest::query()
+        ->where('work_id',$s)
+        ->where('rest_time',NULL)
+        ->value('id');
+        if($rest_id != NULL)
+        {
+            return redirect('/')->with('flash_message', '休憩中のため休憩開始できません');
+        }
+
+         $rest["work_id"] = $s;
+
         Rest::create($rest);
 
         return redirect('/');

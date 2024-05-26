@@ -62,6 +62,18 @@ class WorkController extends Controller
         {
             return redirect('/')->with('flash_message', 'すでに勤務終了済みまたは勤務開始が押されていません');
         }
+        // restIdを取得
+        $rest_id = Rest::query()
+        ->where('work_id',$work_id)
+        ->where('start_time',!NULL)
+        ->where('end_time',NULL)
+        ->value('id');
+        if($rest_id != NULL)
+        {
+            return redirect('/')->with('flash_message', '休憩中のため勤務終了できません');
+        }
+
+
 
         // 
         $total_rest = Rest::query()
