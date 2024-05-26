@@ -1,0 +1,76 @@
+.attendance__alert--success {
+    padding: 10px 30px;
+    border-color: #badbcc;
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.attendance__alert {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.attendance__alert--danger {
+    padding: 10px 0;
+    border-color: #f5c2c7;
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.attendance__alert--danger ul {
+    margin: 0;
+}
+
+.attendance__panel {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.attendance__button {
+    text-align: center;
+}
+
+.attendance__button-submit {
+    padding: 5px;
+    width: 500px;
+    height: 20vh;
+    border: none;
+    border-radius: 3px;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    margin-right: 40px;
+    font-size: 20px;
+}
+.attendance__button:active {
+    background: #fff;
+}
+
+.attendance__content {
+    height: 86vh;
+    background-color: #f4f4f4;
+    padding-top: 40px;
+}
+
+.attendance__content-area {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.attendance__panel-top {
+    display: flex;
+    justify-content: center;
+}
+
+.attendance__panel-bottom {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.flash_message {
+    text-align: center;
+    color: red;
+}

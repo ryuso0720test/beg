@@ -1,0 +1,94 @@
+.date__content {
+    height: 86vh;
+    background-color: #f4f4f4;
+    padding-top: 40px;
+}
+
+.date-title__content {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+.date-title__left {
+    border: solid 1px blue;
+    width: 70px;
+    color: blue;
+    text-align: center;
+    font-size: 2em;
+}
+
+.date-title__right {
+    border: solid 1px blue;
+    width: 70px;
+    color: blue;
+    text-align: center;
+    font-size: 2em;
+}
+
+.date-title__center {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 5% 0 5%;
+}
+
+.date__main {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.date-table {
+    width: 100%;
+}
+
+.date-table__header {
+    text-align: left;
+    border-top: solid 1px #868585;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.date-table__row {
+    border-top: solid 1px #868585;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.attendance__panel {
+    margin: 0 auto;
+    width: 70%;
+}
+
+
+
+.attendance__content-area {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.attendance__panel-top {
+    display: flex;
+    justify-content: center;
+}
+
+.attendance__panel-bottom {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.info-btn {
+    border: solid 1px #868585;
+    padding: 2px 4px;
+    background-color: lightskyblue;
+    color: aliceblue;
+}
