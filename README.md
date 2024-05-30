@@ -55,7 +55,8 @@
 ※本番環境ではメール認証機能は実装しておりません
 
 ## ER図
-![新規 テキスト ドキュメント](https://github.com/ryuso0720test/beg/assets/155881611/b9917001-88e3-4b24-8df9-4d960e3ce566)
+![新規 テキスト ドキュメント](https://github.com/ryuso0720test/beg/assets/155881611/304b3162-5eba-4b07-9e61-74a19540a217)
+
 
 
 
