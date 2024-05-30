@@ -33,6 +33,7 @@
    MAIL_PASSWORD=null
    MAIL_ENCRYPTION=null
    MAIL_FROM_ADDRESS="hello@example.com"
+```
 
 4. php artisan key:generate
 5. php artisan migrate
