@@ -37,6 +37,8 @@
 
 4. php artisan key:generate
 5. php artisan migrate
+6. php artisan db:seed
+   ※シーディングデータには6/1日の勤怠データが挿入されます
 
 ## 使用技術
 - PHP 7.4.9
